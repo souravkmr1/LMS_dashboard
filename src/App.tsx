@@ -23,6 +23,34 @@ function App() {
   const freeCourse = mockCourses.find(c => c.type === 'free');
   const paidCourse = mockCourses.find(c => c.type === 'paid');
 
+  // Mock upcoming live training batches
+  const upcomingLiveTrainingBatches = [
+    {
+      id: '1',
+      name: 'Full Stack .NET Development',
+      startDate: '15th Jan 2025',
+      time: '7:00 PM IST',
+      duration: '3 Months',
+      instructor: 'Shailendra Chauhan'
+    },
+    {
+      id: '2',
+      name: 'Azure AI & Machine Learning',
+      startDate: '22nd Jan 2025',
+      time: '6:30 PM IST',
+      duration: '2.5 Months',
+      instructor: 'Mukesh Kumar'
+    },
+    {
+      id: '3',
+      name: 'React & Node.js Bootcamp',
+      startDate: '1st Feb 2025',
+      time: '8:00 PM IST',
+      duration: '4 Months',
+      instructor: 'Priyanka Yadav'
+    }
+  ];
+
   // Mock course-wise certification progress
   const certificationProgress = [
     {
@@ -118,20 +146,24 @@ function App() {
         </div>
       </FeatureBox>
 
-      {/* Upcoming Masterclass */}
+      {/* Upcoming Live Training Batches */}
       <FeatureBox
-        title="Upcoming Masterclass"
-        description="Don't miss our free sessions"
+        title="Upcoming Live Training Batches"
+        description="Join our upcoming live training programs"
         icon={Calendar}
         color="teal"
       >
         <div className="space-y-3">
-          {mockEvents.filter(e => e.isFree).slice(0, 2).map(event => (
-            <div key={event.id} className="border rounded-lg p-3 hover:bg-teal-50 transition-colors">
-              <h4 className="font-semibold text-sm text-gray-800">{event.title}</h4>
-              <p className="text-xs text-gray-600 mb-2">{event.date.toLocaleDateString()}</p>
+          {upcomingLiveTrainingBatches.slice(0, 2).map(batch => (
+            <div key={batch.id} className="bg-white border border-teal-200 rounded-lg p-3 hover:bg-teal-50 transition-colors">
+              <h4 className="font-semibold text-sm text-gray-800 mb-1">{batch.name}</h4>
+              <div className="text-xs text-gray-600 mb-2">
+                <p>📅 Starts: {batch.startDate}</p>
+                <p>⏰ Time: {batch.time}</p>
+                <p>👨‍🏫 Instructor: {batch.instructor}</p>
+              </div>
               <button className="text-xs bg-teal-500 text-white px-3 py-1 rounded-full hover:bg-teal-600 transition-colors">
-                Register
+                Book Free Demo
               </button>
             </div>
           ))}
@@ -465,19 +497,27 @@ function App() {
             {freeCourse && <CourseCard course={freeCourse} />}
           </FeatureBox>
 
-          {/* DSA Practice */}
+          {/* Upcoming Live Training Batches */}
           <FeatureBox
-            title="DSA Arena"
-            description="Practice coding problems"
-            icon={Code}
-            color="blue"
+            title="Upcoming Live Training Batches"
+            description="Join our upcoming live training programs"
+            icon={Calendar}
+            color="teal"
           >
-            <div className="bg-blue-50 border border-blue-200 rounded-lg p-3">
-              <h4 className="font-semibold text-blue-800 text-sm">Today's Challenge</h4>
-              <p className="text-xs text-blue-600">Binary Search Tree</p>
-              <button className="mt-2 text-xs bg-blue-500 text-white px-3 py-1 rounded-full">
-                Solve Now
-              </button>
+            <div className="space-y-3">
+              {upcomingLiveTrainingBatches.slice(0, 2).map(batch => (
+                <div key={batch.id} className="bg-white border border-teal-200 rounded-lg p-3 hover:bg-teal-50 transition-colors">
+                  <h4 className="font-semibold text-sm text-gray-800 mb-1">{batch.name}</h4>
+                  <div className="text-xs text-gray-600 mb-2">
+                    <p>📅 Starts: {batch.startDate}</p>
+                    <p>⏰ Time: {batch.time}</p>
+                    <p>👨‍🏫 Instructor: {batch.instructor}</p>
+                  </div>
+                  <button className="text-xs bg-teal-500 text-white px-3 py-1 rounded-full hover:bg-teal-600 transition-colors">
+                    Book Free Demo
+                  </button>
+                </div>
+              ))}
             </div>
           </FeatureBox>
 
@@ -486,12 +526,12 @@ function App() {
             title="Free Resources"
             description="Interview books & guides"
             icon={FileText}
-            color="teal"
+            color="indigo"
           >
             <div className="space-y-2">
               <div className="border rounded p-2">
                 <h4 className="text-xs font-semibold">React Interview Guide</h4>
-                <button className="text-xs bg-teal-500 text-white px-2 py-1 rounded mt-1">
+                <button className="text-xs bg-indigo-500 text-white px-2 py-1 rounded mt-1">
                   View
                 </button>
               </div>
