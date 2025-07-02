@@ -18,9 +18,9 @@ export default function EventCard({ event }: EventCardProps) {
 
   const getEventTypeColor = (type: string) => {
     switch (type) {
-      case 'masterclass': return 'bg-blue-500';
-      case 'batch': return 'bg-purple-500';
-      case 'ama': return 'bg-green-500';
+      case 'masterclass': return 'bg-cyan-500';
+      case 'batch': return 'bg-blue-500';
+      case 'ama': return 'bg-teal-500';
       case 'workshop': return 'bg-orange-500';
       default: return 'bg-gray-500';
     }
@@ -45,14 +45,14 @@ export default function EventCard({ event }: EventCardProps) {
         <div className="flex items-center gap-2">
           <span className={`
             px-2 py-1 rounded-full text-xs font-semibold
-            ${event.isFree ? 'bg-green-100 text-green-700' : 'bg-purple-100 text-purple-700'}
+            ${event.isFree ? 'bg-cyan-100 text-cyan-700' : 'bg-blue-100 text-blue-700'}
           `}>
             {event.isFree ? 'FREE' : 'PREMIUM'}
           </span>
           <span className="text-xs text-gray-500 capitalize">{event.type}</span>
         </div>
         
-        <button className="bg-gradient-to-r from-blue-500 to-purple-500 text-white px-4 py-1 rounded-lg text-sm font-semibold hover:from-blue-600 hover:to-purple-600 transition-all duration-300 flex items-center gap-1">
+        <button className="bg-gradient-to-r from-cyan-500 to-blue-500 text-white px-4 py-1 rounded-lg text-sm font-semibold hover:from-cyan-600 hover:to-blue-600 transition-all duration-300 flex items-center gap-1">
           Register
           <ExternalLink className="w-3 h-3" />
         </button>

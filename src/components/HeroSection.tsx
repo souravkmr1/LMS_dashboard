@@ -61,21 +61,21 @@ export default function HeroSection({ user, liveSession, freeCourse }: HeroSecti
         {/* Overall Progress */}
         <div className="bg-white/20 backdrop-blur-sm rounded-xl p-4 border border-white/30">
           <div className="flex items-center gap-2 mb-2">
-            <div className="bg-blue-500 p-1.5 rounded-lg">
+            <div className="bg-cyan-500 p-1.5 rounded-lg">
               <Brain className="w-4 h-4 text-white" />
             </div>
             <h3 className="font-semibold text-white text-sm">Overall Progress</h3>
           </div>
           <div className="text-2xl font-bold text-white mb-1">68%</div>
           <div className="w-full bg-white/30 rounded-full h-2">
-            <div className="bg-gradient-to-r from-blue-400 to-cyan-400 h-2 rounded-full" style={{ width: '68%' }}></div>
+            <div className="bg-gradient-to-r from-cyan-400 to-blue-400 h-2 rounded-full" style={{ width: '68%' }}></div>
           </div>
         </div>
 
         {/* Hours Spent */}
         <div className="bg-white/20 backdrop-blur-sm rounded-xl p-4 border border-white/30">
           <div className="flex items-center gap-2 mb-2">
-            <div className="bg-emerald-500 p-1.5 rounded-lg">
+            <div className="bg-teal-500 p-1.5 rounded-lg">
               <Calendar className="w-4 h-4 text-white" />
             </div>
             <h3 className="font-semibold text-white text-sm">Hours Spent</h3>
@@ -87,7 +87,7 @@ export default function HeroSection({ user, liveSession, freeCourse }: HeroSecti
         {/* Live Classes Attended */}
         <div className="bg-white/20 backdrop-blur-sm rounded-xl p-4 border border-white/30">
           <div className="flex items-center gap-2 mb-2">
-            <div className="bg-purple-500 p-1.5 rounded-lg">
+            <div className="bg-blue-500 p-1.5 rounded-lg">
               <Users className="w-4 h-4 text-white" />
             </div>
             <h3 className="font-semibold text-white text-sm">Live Classes Attended</h3>
@@ -115,16 +115,16 @@ export default function HeroSection({ user, liveSession, freeCourse }: HeroSecti
     return (
       <div className="space-y-6">
         {/* Main Hero Section */}
-        <div className="bg-gradient-to-br from-blue-600 via-purple-600 to-blue-800 rounded-2xl p-8 text-white relative overflow-hidden">
+        <div className="bg-gradient-to-br from-cyan-600 via-blue-600 to-teal-800 rounded-2xl p-8 text-white relative overflow-hidden">
           <div className="absolute inset-0 bg-black/10 backdrop-blur-sm"></div>
           <div className="relative z-10 space-y-6">
             <div className="flex items-center justify-between">
               <div className="flex-1">
                 <h1 className="text-3xl font-bold mb-2">
                   Hi {user.name}! Your next live class starts in{' '}
-                  <span className="text-yellow-300">{liveSchedules[0] ? getTimeUntilSession(liveSchedules[0].time) : '0h 0m'}</span>
+                  <span className="text-cyan-300">{liveSchedules[0] ? getTimeUntilSession(liveSchedules[0].time) : '0h 0m'}</span>
                 </h1>
-                <p className="text-blue-100 mb-6 text-lg">
+                <p className="text-cyan-100 mb-6 text-lg">
                   {liveSchedules[0]?.course}: {liveSchedules[0]?.session}
                 </p>
               </div>
@@ -141,7 +141,7 @@ export default function HeroSection({ user, liveSession, freeCourse }: HeroSecti
         {/* Live Schedules Section with Course Details */}
         <div className="bg-white rounded-2xl p-6 shadow-lg border border-gray-100">
           <div className="flex items-center gap-3 mb-6">
-            <div className="bg-gradient-to-r from-purple-500 to-indigo-500 p-2 rounded-xl">
+            <div className="bg-gradient-to-r from-cyan-500 to-blue-500 p-2 rounded-xl">
               <Calendar className="w-6 h-6 text-white" />
             </div>
             <h2 className="text-2xl font-bold text-gray-800">Your Live Training Schedules</h2>
@@ -154,7 +154,7 @@ export default function HeroSection({ user, liveSession, freeCourse }: HeroSecti
                 className={`
                   border-2 rounded-xl p-4 transition-all duration-300 hover:shadow-lg
                   ${schedule.isNext 
-                    ? 'border-purple-300 bg-gradient-to-br from-purple-50 to-indigo-50' 
+                    ? 'border-cyan-300 bg-gradient-to-br from-cyan-50 to-blue-50' 
                     : 'border-gray-200 bg-gray-50 hover:bg-gray-100'
                   }
                 `}
@@ -165,19 +165,19 @@ export default function HeroSection({ user, liveSession, freeCourse }: HeroSecti
                     <p className="text-sm text-gray-600 mb-2">{schedule.session}</p>
                   </div>
                   {schedule.isNext && (
-                    <span className="bg-purple-500 text-white text-xs px-2 py-1 rounded-full font-semibold">
+                    <span className="bg-cyan-500 text-white text-xs px-2 py-1 rounded-full font-semibold">
                       Next
                     </span>
                   )}
                 </div>
 
                 {/* Upcoming Batch Date & Time */}
-                <div className="bg-white/80 border border-purple-200 rounded-lg p-3 mb-3">
+                <div className="bg-white/80 border border-cyan-200 rounded-lg p-3 mb-3">
                   <div className="flex items-center gap-2 mb-1">
-                    <Calendar className="w-4 h-4 text-purple-600" />
-                    <span className="text-sm font-semibold text-purple-700">Next Batch</span>
+                    <Calendar className="w-4 h-4 text-cyan-600" />
+                    <span className="text-sm font-semibold text-cyan-700">Next Batch</span>
                   </div>
-                  <div className="flex items-center gap-2 text-sm text-purple-600">
+                  <div className="flex items-center gap-2 text-sm text-cyan-600">
                     <Clock className="w-4 h-4" />
                     <span>{schedule.batchDate} at {schedule.batchTime}</span>
                   </div>
@@ -197,7 +197,7 @@ export default function HeroSection({ user, liveSession, freeCourse }: HeroSecti
                   </div>
                   <div className="w-full bg-gray-200 rounded-full h-2">
                     <div 
-                      className="bg-gradient-to-r from-purple-500 to-indigo-500 h-2 rounded-full transition-all duration-500"
+                      className="bg-gradient-to-r from-cyan-500 to-blue-500 h-2 rounded-full transition-all duration-500"
                       style={{ width: `${schedule.progress}%` }}
                     ></div>
                   </div>
@@ -207,8 +207,8 @@ export default function HeroSection({ user, liveSession, freeCourse }: HeroSecti
                 <button className={`
                   w-full py-2 rounded-lg font-semibold transition-all duration-300 flex items-center justify-center gap-2 text-sm
                   ${schedule.isNext 
-                    ? 'bg-gradient-to-r from-purple-500 to-indigo-500 text-white hover:from-purple-600 hover:to-indigo-600' 
-                    : 'bg-gradient-to-r from-blue-500 to-purple-500 text-white hover:from-blue-600 hover:to-purple-600'
+                    ? 'bg-gradient-to-r from-cyan-500 to-blue-500 text-white hover:from-cyan-600 hover:to-blue-600' 
+                    : 'bg-gradient-to-r from-blue-500 to-cyan-500 text-white hover:from-blue-600 hover:to-cyan-600'
                   }
                 `}>
                   {schedule.isNext ? (
@@ -232,7 +232,7 @@ export default function HeroSection({ user, liveSession, freeCourse }: HeroSecti
   }
 
   return (
-    <div className="bg-gradient-to-br from-green-500 via-teal-500 to-blue-500 rounded-2xl p-8 text-white relative overflow-hidden">
+    <div className="bg-gradient-to-br from-cyan-500 via-teal-500 to-blue-500 rounded-2xl p-8 text-white relative overflow-hidden">
       <div className="absolute inset-0 bg-black/10 backdrop-blur-sm"></div>
       <div className="relative z-10 space-y-6">
         <div className="flex items-center justify-between">
@@ -240,11 +240,11 @@ export default function HeroSection({ user, liveSession, freeCourse }: HeroSecti
             <h1 className="text-3xl font-bold mb-2">
               Welcome, {user.name}! Let's continue your free learning journey 🎓
             </h1>
-            <p className="text-green-100 mb-6 text-lg">
+            <p className="text-cyan-100 mb-6 text-lg">
               You're doing great! Keep up the momentum.
             </p>
             <div className="flex gap-4 flex-wrap">
-              <button className="bg-white text-green-600 px-6 py-3 rounded-xl font-semibold hover:bg-green-50 transition-all duration-300 transform hover:scale-105 flex items-center gap-2 shadow-lg">
+              <button className="bg-white text-cyan-600 px-6 py-3 rounded-xl font-semibold hover:bg-cyan-50 transition-all duration-300 transform hover:scale-105 flex items-center gap-2 shadow-lg">
                 <BookOpen className="w-5 h-5" />
                 Resume Course
               </button>

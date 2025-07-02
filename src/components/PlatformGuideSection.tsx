@@ -47,13 +47,13 @@ const guideVideos: GuideVideo[] = [
 
 export default function PlatformGuideSection() {
   return (
-    <div className="bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 rounded-2xl p-8 border-2 border-blue-100">
+    <div className="bg-gradient-to-br from-cyan-50 via-blue-50 to-teal-50 rounded-2xl p-8 border-2 border-cyan-100">
       <div className="text-center mb-8">
         <div className="flex items-center justify-center gap-3 mb-4">
-          <div className="bg-gradient-to-r from-blue-500 to-purple-500 p-3 rounded-xl">
+          <div className="bg-gradient-to-r from-cyan-500 to-blue-500 p-3 rounded-xl">
             <Play className="w-8 h-8 text-white" />
           </div>
-          <h2 className="text-3xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+          <h2 className="text-3xl font-bold bg-gradient-to-r from-cyan-600 to-blue-600 bg-clip-text text-transparent">
             📺 Learn How to Use ScholarHat Effectively
           </h2>
         </div>
@@ -82,7 +82,7 @@ export default function PlatformGuideSection() {
                   </div>
                 </div>
                 <div className="absolute top-3 left-3">
-                  <div className="bg-blue-500 p-2 rounded-lg shadow-lg">
+                  <div className="bg-cyan-500 p-2 rounded-lg shadow-lg">
                     <IconComponent className="w-4 h-4 text-white" />
                   </div>
                 </div>
@@ -96,8 +96,8 @@ export default function PlatformGuideSection() {
                 <button className={`
                   w-full py-3 rounded-xl font-semibold transition-all duration-300 flex items-center justify-center gap-2 text-sm
                   ${video.ctaType === 'discord' 
-                    ? 'bg-gradient-to-r from-indigo-500 to-purple-500 text-white hover:from-indigo-600 hover:to-purple-600 hover:shadow-lg' 
-                    : 'bg-gradient-to-r from-blue-500 to-cyan-500 text-white hover:from-blue-600 hover:to-cyan-600 hover:shadow-lg'
+                    ? 'bg-gradient-to-r from-cyan-500 to-blue-500 text-white hover:from-cyan-600 hover:to-blue-600 hover:shadow-lg' 
+                    : 'bg-gradient-to-r from-cyan-500 to-teal-500 text-white hover:from-cyan-600 hover:to-teal-600 hover:shadow-lg'
                   }
                   transform hover:scale-105
                 `}>
