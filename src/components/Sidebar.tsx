@@ -1,5 +1,5 @@
 import React from 'react';
-import { Gift, Calendar, TrendingUp, Users, Star, Trophy, ShoppingBag } from 'lucide-react';
+import { Gift, MessageCircle, Calendar, TrendingUp, Users, Star, Trophy, ShoppingBag } from 'lucide-react';
 import { Referral, Event } from '../types';
 import EventCard from './EventCard';
 
@@ -59,6 +59,30 @@ export default function Sidebar({ referral, events, userType }: SidebarProps) {
         <button className="w-full bg-gradient-to-r from-orange-500 to-yellow-500 text-white py-3 rounded-xl font-semibold hover:from-orange-600 hover:to-yellow-600 transition-all duration-300 mt-4">
           Refer Friends Now
         </button>
+      </div>
+
+      {/* Community Support Widget */}
+      <div className="bg-gradient-to-br from-cyan-50 to-blue-50 border-2 border-cyan-200 rounded-2xl p-6">
+        <div className="flex items-center gap-3 mb-4">
+          <div className="bg-cyan-500 p-2 rounded-xl">
+            <MessageCircle className="w-6 h-6 text-white" />
+          </div>
+          <h3 className="text-xl font-bold text-cyan-700">Join Our Community and Support Help Group</h3>
+        </div>
+        
+        <p className="text-gray-600 mb-4">Connect with peers, get instant help, and join our vibrant community!</p>
+        
+        <div className="space-y-3">
+          <button className="w-full bg-gradient-to-r from-cyan-500 to-blue-500 text-white py-3 rounded-xl font-semibold hover:from-cyan-600 hover:to-blue-600 transition-all duration-300 flex items-center justify-center gap-2">
+            <MessageCircle className="w-5 h-5" />
+            Join Discord
+          </button>
+          
+          <button className="w-full bg-gradient-to-r from-green-500 to-emerald-500 text-white py-3 rounded-xl font-semibold hover:from-green-600 hover:to-emerald-600 transition-all duration-300 flex items-center justify-center gap-2">
+            <MessageCircle className="w-5 h-5" />
+            Join WhatsApp Group
+          </button>
+        </div>
       </div>
 
       {/* Upcoming Masterclass */}
