@@ -87,7 +87,7 @@ function App() {
     }
   ];
 
-  // Simple skill tests data for the simplified version - all show "Take Test"
+  // Simple skill tests data for the simplified version - only show 2 tests
   const simpleSkillTests = [
     {
       id: '1',
@@ -99,13 +99,6 @@ function App() {
     {
       id: '2',
       subject: 'System Design',
-      status: 'pending' as const,
-      certified: false
-    },
-    {
-      id: '3',
-      subject: 'React.js',
-      score: 76,
       status: 'pending' as const,
       certified: false
     }
@@ -279,9 +272,9 @@ function App() {
         </div>
       </FeatureBox>
 
-      {/* Live Batches */}
+      {/* Live Batches Plan */}
       <FeatureBox
-        title="Live Batches"
+        title="Live Batches Plan"
         description="Connect with your batchmates"
         icon={Users}
         color="blue"
@@ -426,7 +419,7 @@ function App() {
             color="cyan"
           >
             <div className="space-y-3">
-              {simpleSkillTests.slice(0, 2).map(test => (
+              {simpleSkillTests.map(test => (
                 <div key={test.id} className="bg-white rounded-lg p-3 border border-gray-200 hover:shadow-md transition-all duration-200">
                   <div className="flex items-center justify-between mb-2">
                     <h4 className="font-semibold text-gray-800 text-sm">{test.subject}</h4>
