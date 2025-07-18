@@ -119,8 +119,9 @@ function App() {
         icon={BookOpen}
         color="cyan"
         className="md:col-span-2 lg:col-span-1"
+        isDarkMode={isDarkMode}
       >
-        {freeCourse && <CourseCard course={freeCourse} />}
+        {freeCourse && <CourseCard course={freeCourse} isDarkMode={isDarkMode} />}
       </FeatureBox>
 
       {/* Learning Progress */}
@@ -129,10 +130,13 @@ function App() {
         description="Track your achievements"
         icon={Target}
         color="blue"
+        isDarkMode={isDarkMode}
       >
         <div className="space-y-3">
           <div className="flex justify-between items-center">
-            <span className="text-sm text-gray-600">Modules Completed</span>
+            <span className={`text-sm transition-colors duration-300 ${
+              isDarkMode ? 'text-theme-secondary' : 'text-gray-600'
+            }`}>Modules Completed</span>
             <span className="font-semibold text-blue-600">{freeCourse?.completedModules}/{freeCourse?.totalModules}</span>
           </div>
           <div className="w-full bg-gray-200 rounded-full h-3">
@@ -141,7 +145,9 @@ function App() {
               style={{ width: `${freeCourse?.progress || 0}%` }}
             ></div>
           </div>
-          <p className="text-sm text-gray-600">Keep going! You're doing great 🎉</p>
+          <p className={`text-sm transition-colors duration-300 ${
+            isDarkMode ? 'text-theme-secondary' : 'text-gray-600'
+          }`}>Keep going! You're doing great 🎉</p>
         </div>
       </FeatureBox>
 
@@ -151,12 +157,21 @@ function App() {
         description="Join our upcoming live training programs"
         icon={Calendar}
         color="teal"
+        isDarkMode={isDarkMode}
       >
         <div className="space-y-3">
           {upcomingLiveTrainingBatches.slice(0, 2).map(batch => (
-            <div key={batch.id} className="bg-white border border-teal-200 rounded-lg p-3 hover:bg-teal-50 transition-colors">
-              <h4 className="font-semibold text-sm text-gray-800 mb-1">{batch.name}</h4>
-              <div className="text-xs text-gray-600 mb-2">
+            <div key={batch.id} className={`border border-teal-200 rounded-lg p-3 transition-colors ${
+              isDarkMode 
+                ? 'bg-theme-tertiary hover:bg-theme-secondary border-teal-700/30' 
+                : 'bg-white hover:bg-teal-50'
+            }`}>
+              <h4 className={`font-semibold text-sm mb-1 transition-colors duration-300 ${
+                isDarkMode ? 'text-theme-primary' : 'text-gray-800'
+              }`}>{batch.name}</h4>
+              <div className={`text-xs mb-2 transition-colors duration-300 ${
+                isDarkMode ? 'text-theme-secondary' : 'text-gray-600'
+              }`}>
                 <p>📅 Starts: {batch.startDate}</p>
                 <p>⏰ Time: {batch.time}</p>
                 <p>👨‍🏫 Instructor: {batch.instructor}</p>
@@ -175,16 +190,29 @@ function App() {
         description="Sharpen your coding skills"
         icon={Code}
         color="orange"
+        isDarkMode={isDarkMode}
       >
         <div className="space-y-3">
-          <div className="bg-orange-50 border border-orange-200 rounded-lg p-3">
-            <h4 className="font-semibold text-orange-800 text-sm">Today's Challenge</h4>
-            <p className="text-xs text-orange-600">Two Sum Problem</p>
+          <div className={`border border-orange-200 rounded-lg p-3 ${
+            isDarkMode 
+              ? 'bg-orange-900/20 border-orange-700/30' 
+              : 'bg-orange-50'
+          }`}>
+            <h4 className={`font-semibold text-sm ${
+              isDarkMode ? 'text-orange-300' : 'text-orange-800'
+            }`}>Today's Challenge</h4>
+            <p className={`text-xs ${
+              isDarkMode ? 'text-orange-400' : 'text-orange-600'
+            }`}>Two Sum Problem</p>
             <button className="mt-2 text-xs bg-orange-500 text-white px-3 py-1 rounded-full hover:bg-orange-600 transition-colors">
               Solve Now
             </button>
           </div>
-          <button className="w-full bg-gray-100 text-gray-700 py-2 rounded-lg text-sm font-medium hover:bg-gray-200 transition-colors">
+          <button className={`w-full py-2 rounded-lg text-sm font-medium transition-colors ${
+            isDarkMode 
+              ? 'bg-theme-tertiary text-theme-primary hover:bg-theme-secondary' 
+              : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+          }`}>
             Open Compiler
           </button>
         </div>
@@ -196,18 +224,35 @@ function App() {
         description="Download our latest resources"
         icon={FileText}
         color="indigo"
+        isDarkMode={isDarkMode}
       >
         <div className="space-y-3">
-          <div className="border rounded-lg p-3 hover:bg-indigo-50 transition-colors">
-            <h4 className="font-semibold text-sm text-gray-800">React Interview Guide</h4>
-            <p className="text-xs text-gray-600 mb-2">50+ Questions & Answers</p>
+          <div className={`border rounded-lg p-3 transition-colors ${
+            isDarkMode 
+              ? 'border-indigo-700/30 hover:bg-indigo-900/20' 
+              : 'border-gray-200 hover:bg-indigo-50'
+          }`}>
+            <h4 className={`font-semibold text-sm transition-colors duration-300 ${
+              isDarkMode ? 'text-theme-primary' : 'text-gray-800'
+            }`}>React Interview Guide</h4>
+            <p className={`text-xs mb-2 transition-colors duration-300 ${
+              isDarkMode ? 'text-theme-secondary' : 'text-gray-600'
+            }`}>50+ Questions & Answers</p>
             <button className="text-xs bg-indigo-500 text-white px-3 py-1 rounded-full hover:bg-indigo-600 transition-colors">
               View
             </button>
           </div>
-          <div className="border rounded-lg p-3 hover:bg-indigo-50 transition-colors">
-            <h4 className="font-semibold text-sm text-gray-800">JavaScript Essentials</h4>
-            <p className="text-xs text-gray-600 mb-2">Complete Reference</p>
+          <div className={`border rounded-lg p-3 transition-colors ${
+            isDarkMode 
+              ? 'border-indigo-700/30 hover:bg-indigo-900/20' 
+              : 'border-gray-200 hover:bg-indigo-50'
+          }`}>
+            <h4 className={`font-semibold text-sm transition-colors duration-300 ${
+              isDarkMode ? 'text-theme-primary' : 'text-gray-800'
+            }`}>JavaScript Essentials</h4>
+            <p className={`text-xs mb-2 transition-colors duration-300 ${
+              isDarkMode ? 'text-theme-secondary' : 'text-gray-600'
+            }`}>Complete Reference</p>
             <button className="text-xs bg-indigo-500 text-white px-3 py-1 rounded-full hover:bg-indigo-600 transition-colors">
               View
             </button>
@@ -221,10 +266,11 @@ function App() {
         description="Test your knowledge"
         icon={Trophy}
         color="pink"
+        isDarkMode={isDarkMode}
       >
         <div className="space-y-3">
           {mockSkillTests.slice(0, 2).map(test => (
-            <SkillTestCard key={test.id} test={test} />
+            <SkillTestCard key={test.id} test={test} isDarkMode={isDarkMode} />
           ))}
         </div>
       </FeatureBox>
@@ -239,12 +285,19 @@ function App() {
         description="Test your expertise"
         icon={Zap}
         color="cyan"
+        isDarkMode={isDarkMode}
       >
         <div className="space-y-3">
           {simpleSkillTests.map(test => (
-            <div key={test.id} className="bg-white rounded-lg p-3 border border-gray-200 hover:shadow-md transition-all duration-200">
+            <div key={test.id} className={`rounded-lg p-3 border hover:shadow-md transition-all duration-200 ${
+              isDarkMode 
+                ? 'bg-theme-tertiary border-theme-primary hover:bg-theme-secondary' 
+                : 'bg-white border-gray-200'
+            }`}>
               <div className="flex items-center justify-between mb-2">
-                <h4 className="font-semibold text-gray-800 text-sm">{test.subject}</h4>
+                <h4 className={`font-semibold text-sm transition-colors duration-300 ${
+                  isDarkMode ? 'text-theme-primary' : 'text-gray-800'
+                }`}>{test.subject}</h4>
                 <span className="text-orange-500 text-xs">⏱</span>
               </div>
               
@@ -262,17 +315,32 @@ function App() {
         description="Upcoming sessions calendar"
         icon={Calendar}
         color="teal"
+        isDarkMode={isDarkMode}
       >
         <div className="space-y-3">
-          <div className="bg-teal-50 border border-teal-200 rounded-lg p-3">
-            <h4 className="font-semibold text-teal-800 text-sm">Next Session</h4>
-            <p className="text-xs text-teal-600">{mockLiveSession.title}</p>
-            <p className="text-xs text-teal-600">{mockLiveSession.scheduledTime.toLocaleString()}</p>
+          <div className={`border border-teal-200 rounded-lg p-3 ${
+            isDarkMode 
+              ? 'bg-teal-900/20 border-teal-700/30' 
+              : 'bg-teal-50'
+          }`}>
+            <h4 className={`font-semibold text-sm ${
+              isDarkMode ? 'text-teal-300' : 'text-teal-800'
+            }`}>Next Session</h4>
+            <p className={`text-xs ${
+              isDarkMode ? 'text-teal-400' : 'text-teal-600'
+            }`}>{mockLiveSession.title}</p>
+            <p className={`text-xs ${
+              isDarkMode ? 'text-teal-400' : 'text-teal-600'
+            }`}>{mockLiveSession.scheduledTime.toLocaleString()}</p>
             <button className="mt-2 text-xs bg-teal-500 text-white px-3 py-1 rounded-full hover:bg-teal-600 transition-colors">
               Join
             </button>
           </div>
-          <button className="w-full bg-gray-100 text-gray-700 py-2 rounded-lg text-sm font-medium hover:bg-gray-200 transition-colors">
+          <button className={`w-full py-2 rounded-lg text-sm font-medium transition-colors ${
+            isDarkMode 
+              ? 'bg-theme-tertiary text-theme-primary hover:bg-theme-secondary' 
+              : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+          }`}>
             View Full Calendar
           </button>
         </div>
@@ -284,16 +352,29 @@ function App() {
         description="Connect with your batchmates"
         icon={Users}
         color="blue"
+        isDarkMode={isDarkMode}
       >
         <div className="space-y-3">
-          <div className="bg-blue-50 border border-blue-200 rounded-lg p-3">
-            <h4 className="font-semibold text-blue-800 text-sm">Batch 2024-01</h4>
-            <p className="text-xs text-blue-600">45 Students</p>
+          <div className={`border border-blue-200 rounded-lg p-3 ${
+            isDarkMode 
+              ? 'bg-blue-900/20 border-blue-700/30' 
+              : 'bg-blue-50'
+          }`}>
+            <h4 className={`font-semibold text-sm ${
+              isDarkMode ? 'text-blue-300' : 'text-blue-800'
+            }`}>Batch 2024-01</h4>
+            <p className={`text-xs ${
+              isDarkMode ? 'text-blue-400' : 'text-blue-600'
+            }`}>45 Students</p>
             <button className="mt-2 text-xs bg-blue-500 text-white px-3 py-1 rounded-full hover:bg-blue-600 transition-colors">
               Join Discord
             </button>
           </div>
-          <button className="w-full bg-gray-100 text-gray-700 py-2 rounded-lg text-sm font-medium hover:bg-gray-200 transition-colors">
+          <button className={`w-full py-2 rounded-lg text-sm font-medium transition-colors ${
+            isDarkMode 
+              ? 'bg-theme-tertiary text-theme-primary hover:bg-theme-secondary' 
+              : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+          }`}>
             View Recordings
           </button>
         </div>
@@ -305,13 +386,24 @@ function App() {
         description="Build real-world applications"
         icon={Code}
         color="orange"
+        isDarkMode={isDarkMode}
       >
         <div className="space-y-3">
           {mockProjects.map(project => (
-            <div key={project.id} className="border rounded-lg p-3 hover:bg-orange-50 transition-colors">
-              <h4 className="font-semibold text-sm text-gray-800">{project.title}</h4>
-              <p className="text-xs text-gray-600">Status: {project.status}</p>
-              <p className="text-xs text-gray-600">Due: {project.dueDate.toLocaleDateString()}</p>
+            <div key={project.id} className={`border rounded-lg p-3 transition-colors ${
+              isDarkMode 
+                ? 'border-orange-700/30 hover:bg-orange-900/20' 
+                : 'border-gray-200 hover:bg-orange-50'
+            }`}>
+              <h4 className={`font-semibold text-sm transition-colors duration-300 ${
+                isDarkMode ? 'text-theme-primary' : 'text-gray-800'
+              }`}>{project.title}</h4>
+              <p className={`text-xs transition-colors duration-300 ${
+                isDarkMode ? 'text-theme-secondary' : 'text-gray-600'
+              }`}>Status: {project.status}</p>
+              <p className={`text-xs transition-colors duration-300 ${
+                isDarkMode ? 'text-theme-secondary' : 'text-gray-600'
+              }`}>Due: {project.dueDate.toLocaleDateString()}</p>
               <button className="mt-2 text-xs bg-orange-500 text-white px-3 py-1 rounded-full hover:bg-orange-600 transition-colors">
                 {project.status === 'ongoing' ? 'Continue' : 'View'}
               </button>
@@ -327,24 +419,35 @@ function App() {
         icon={Trophy}
         color="indigo"
         className="md:col-span-2 lg:col-span-2"
+        isDarkMode={isDarkMode}
       >
         <div className="space-y-4">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
             {/* Live Training Progress */}
             <div>
-              <h4 className="font-semibold text-gray-800 mb-3 flex items-center gap-2">
+              <h4 className={`font-semibold mb-3 flex items-center gap-2 transition-colors duration-300 ${
+                isDarkMode ? 'text-theme-primary' : 'text-gray-800'
+              }`}>
                 <Users className="w-4 h-4 text-cyan-600" />
                 Live Training Learning Progress
               </h4>
               <div className="space-y-3">
                 {certificationProgress.filter(course => course.type === 'live').map(course => (
-                  <div key={course.id} className="bg-white rounded-lg p-3 border border-gray-200">
+                  <div key={course.id} className={`rounded-lg p-3 border transition-colors duration-300 ${
+                    isDarkMode 
+                      ? 'bg-theme-tertiary border-theme-primary' 
+                      : 'bg-white border-gray-200'
+                  }`}>
                     <div className="flex items-start gap-2 mb-2">
                       <Users className="w-4 h-4 text-cyan-600 mt-0.5 flex-shrink-0" />
                       <div className="flex-1 min-w-0">
-                        <h5 className="font-medium text-sm text-gray-800 truncate">{course.courseName}</h5>
+                        <h5 className={`font-medium text-sm truncate transition-colors duration-300 ${
+                          isDarkMode ? 'text-theme-primary' : 'text-gray-800'
+                        }`}>{course.courseName}</h5>
                         <div className="flex justify-between items-center mt-1">
-                          <span className="text-xs text-gray-600">
+                          <span className={`text-xs transition-colors duration-300 ${
+                            isDarkMode ? 'text-theme-secondary' : 'text-gray-600'
+                          }`}>
                             {course.modules.completed}/{course.modules.total} modules
                           </span>
                           <span className="text-xs font-semibold text-cyan-600">{course.progress}%</span>
@@ -364,19 +467,29 @@ function App() {
 
             {/* Video Course Progress */}
             <div>
-              <h4 className="font-semibold text-gray-800 mb-3 flex items-center gap-2">
+              <h4 className={`font-semibold mb-3 flex items-center gap-2 transition-colors duration-300 ${
+                isDarkMode ? 'text-theme-primary' : 'text-gray-800'
+              }`}>
                 <BookOpen className="w-4 h-4 text-blue-600" />
                 Video Course Learning Progress
               </h4>
               <div className="space-y-3">
                 {certificationProgress.filter(course => course.type === 'video').map(course => (
-                  <div key={course.id} className="bg-white rounded-lg p-3 border border-gray-200">
+                  <div key={course.id} className={`rounded-lg p-3 border transition-colors duration-300 ${
+                    isDarkMode 
+                      ? 'bg-theme-tertiary border-theme-primary' 
+                      : 'bg-white border-gray-200'
+                  }`}>
                     <div className="flex items-start gap-2 mb-2">
                       <BookOpen className="w-4 h-4 text-blue-600 mt-0.5 flex-shrink-0" />
                       <div className="flex-1 min-w-0">
-                        <h5 className="font-medium text-sm text-gray-800 truncate">{course.courseName}</h5>
+                        <h5 className={`font-medium text-sm truncate transition-colors duration-300 ${
+                          isDarkMode ? 'text-theme-primary' : 'text-gray-800'
+                        }`}>{course.courseName}</h5>
                         <div className="flex justify-between items-center mt-1">
-                          <span className="text-xs text-gray-600">
+                          <span className={`text-xs transition-colors duration-300 ${
+                            isDarkMode ? 'text-theme-secondary' : 'text-gray-600'
+                          }`}>
                             {course.modules.completed}/{course.modules.total} modules
                           </span>
                           <span className="text-xs font-semibold text-blue-600">{course.progress}%</span>
@@ -395,7 +508,9 @@ function App() {
             </div>
           </div>
           
-          <div className="flex gap-3 pt-3 border-t border-gray-200">
+          <div className={`flex gap-3 pt-3 border-t transition-colors duration-300 ${
+            isDarkMode ? 'border-theme-primary' : 'border-gray-200'
+          }`}>
             <button className="flex-1 bg-gradient-to-r from-cyan-500 to-blue-500 text-white py-3 rounded-lg text-sm font-medium hover:from-cyan-600 hover:to-blue-600 transition-colors flex items-center justify-center gap-2">
               <Trophy className="w-4 h-4" />
               View All Progress
@@ -423,12 +538,19 @@ function App() {
             description="Premium assessments"
             icon={Zap}
             color="cyan"
+            isDarkMode={isDarkMode}
           >
             <div className="space-y-3">
               {simpleSkillTests.map(test => (
-                <div key={test.id} className="bg-white rounded-lg p-3 border border-gray-200 hover:shadow-md transition-all duration-200">
+                <div key={test.id} className={`rounded-lg p-3 border hover:shadow-md transition-all duration-200 ${
+                  isDarkMode 
+                    ? 'bg-theme-tertiary border-theme-primary hover:bg-theme-secondary' 
+                    : 'bg-white border-gray-200'
+                }`}>
                   <div className="flex items-center justify-between mb-2">
-                    <h4 className="font-semibold text-gray-800 text-sm">{test.subject}</h4>
+                    <h4 className={`font-semibold text-sm transition-colors duration-300 ${
+                      isDarkMode ? 'text-theme-primary' : 'text-gray-800'
+                    }`}>{test.subject}</h4>
                     <span className="text-orange-500 text-xs">⏱</span>
                   </div>
                   
@@ -446,10 +568,19 @@ function App() {
             description="Upcoming premium sessions"
             icon={Calendar}
             color="teal"
+            isDarkMode={isDarkMode}
           >
-            <div className="bg-teal-50 border border-teal-200 rounded-lg p-3">
-              <h4 className="font-semibold text-teal-800 text-sm">Next Session</h4>
-              <p className="text-xs text-teal-600">{mockLiveSession.title}</p>
+            <div className={`border border-teal-200 rounded-lg p-3 ${
+              isDarkMode 
+                ? 'bg-teal-900/20 border-teal-700/30' 
+                : 'bg-teal-50'
+            }`}>
+              <h4 className={`font-semibold text-sm ${
+                isDarkMode ? 'text-teal-300' : 'text-teal-800'
+              }`}>Next Session</h4>
+              <p className={`text-xs ${
+                isDarkMode ? 'text-teal-400' : 'text-teal-600'
+              }`}>{mockLiveSession.title}</p>
               <button className="mt-2 text-xs bg-teal-500 text-white px-3 py-1 rounded-full">
                 Join Live
               </button>
@@ -462,10 +593,13 @@ function App() {
             description="Your progress to certificate"
             icon={Trophy}
             color="orange"
+            isDarkMode={isDarkMode}
           >
             <div className="space-y-2">
               <div className="flex justify-between">
-                <span className="text-sm">Progress</span>
+                <span className={`text-sm transition-colors duration-300 ${
+                  isDarkMode ? 'text-theme-secondary' : 'text-gray-600'
+                }`}>Progress</span>
                 <span className="font-semibold text-orange-600">75%</span>
               </div>
               <div className="w-full bg-gray-200 rounded-full h-2">
@@ -491,8 +625,9 @@ function App() {
             description="Continue your free learning"
             icon={BookOpen}
             color="cyan"
+            isDarkMode={isDarkMode}
           >
-            {freeCourse && <CourseCard course={freeCourse} />}
+            {freeCourse && <CourseCard course={freeCourse} isDarkMode={isDarkMode} />}
           </FeatureBox>
 
           {/* Upcoming Live Training Batches */}
@@ -501,12 +636,21 @@ function App() {
             description="Join our upcoming live training programs"
             icon={Calendar}
             color="teal"
+            isDarkMode={isDarkMode}
           >
             <div className="space-y-3">
               {upcomingLiveTrainingBatches.slice(0, 2).map(batch => (
-                <div key={batch.id} className="bg-white border border-teal-200 rounded-lg p-3 hover:bg-teal-50 transition-colors">
-                  <h4 className="font-semibold text-sm text-gray-800 mb-1">{batch.name}</h4>
-                  <div className="text-xs text-gray-600 mb-2">
+                <div key={batch.id} className={`border border-teal-200 rounded-lg p-3 transition-colors ${
+                  isDarkMode 
+                    ? 'bg-theme-tertiary hover:bg-theme-secondary border-teal-700/30' 
+                    : 'bg-white hover:bg-teal-50'
+                }`}>
+                  <h4 className={`font-semibold text-sm mb-1 transition-colors duration-300 ${
+                    isDarkMode ? 'text-theme-primary' : 'text-gray-800'
+                  }`}>{batch.name}</h4>
+                  <div className={`text-xs mb-2 transition-colors duration-300 ${
+                    isDarkMode ? 'text-theme-secondary' : 'text-gray-600'
+                  }`}>
                     <p>📅 Starts: {batch.startDate}</p>
                     <p>⏰ Time: {batch.time}</p>
                     <p>👨‍🏫 Instructor: {batch.instructor}</p>
@@ -525,10 +669,17 @@ function App() {
             description="Interview books & guides"
             icon={FileText}
             color="indigo"
+            isDarkMode={isDarkMode}
           >
             <div className="space-y-2">
-              <div className="border rounded p-2">
-                <h4 className="text-xs font-semibold">React Interview Guide</h4>
+              <div className={`border rounded p-2 transition-colors duration-300 ${
+                isDarkMode 
+                  ? 'border-indigo-700/30 bg-theme-tertiary' 
+                  : 'border-gray-200 bg-white'
+              }`}>
+                <h4 className={`text-xs font-semibold transition-colors duration-300 ${
+                  isDarkMode ? 'text-theme-primary' : 'text-gray-800'
+                }`}>React Interview Guide</h4>
                 <button className="text-xs bg-indigo-500 text-white px-2 py-1 rounded mt-1">
                   View
                 </button>

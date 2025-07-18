@@ -4,19 +4,26 @@ import { SkillTest } from '../types';
 
 interface SkillTestCardProps {
   test: SkillTest;
+  isDarkMode?: boolean;
 }
 
-export default function SkillTestCard({ test }: SkillTestCardProps) {
+export default function SkillTestCard({ test, isDarkMode = false }: SkillTestCardProps) {
   return (
-    <div className="bg-white rounded-xl p-4 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+    <div className={`rounded-xl p-4 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 ${
+      isDarkMode ? 'bg-theme-tertiary' : 'bg-white'
+    }`}>
       <div className="flex items-center justify-between mb-3">
         <div className="flex items-center gap-3">
           <div className="bg-cyan-500 p-2 rounded-lg">
             <Brain className="w-5 h-5 text-white" />
           </div>
           <div>
-            <h4 className="font-semibold text-gray-800">{test.subject}</h4>
-            <p className="text-sm text-gray-600">Skill Test</p>
+            <h4 className={`font-semibold transition-colors duration-300 ${
+              isDarkMode ? 'text-theme-primary' : 'text-gray-800'
+            }`}>{test.subject}</h4>
+            <p className={`text-sm transition-colors duration-300 ${
+              isDarkMode ? 'text-theme-secondary' : 'text-gray-600'
+            }`}>Skill Test</p>
           </div>
         </div>
         
@@ -29,7 +36,9 @@ export default function SkillTestCard({ test }: SkillTestCardProps) {
       
       {test.status === 'completed' && test.score && (
         <div className="mb-3">
-          <div className="flex items-center justify-between text-sm text-gray-600 mb-1">
+          <div className={`flex items-center justify-between text-sm mb-1 transition-colors duration-300 ${
+            isDarkMode ? 'text-theme-secondary' : 'text-gray-600'
+          }`}>
             <span>Score</span>
             <span className="font-semibold text-cyan-600">{test.score}%</span>
           </div>

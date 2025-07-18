@@ -5,9 +5,10 @@ import { Course } from '../types';
 interface CourseCardProps {
   course: Course;
   showLiveTrainingDetails?: boolean;
+  isDarkMode?: boolean;
 }
 
-export default function CourseCard({ course, showLiveTrainingDetails = false }: CourseCardProps) {
+export default function CourseCard({ course, showLiveTrainingDetails = false, isDarkMode = false }: CourseCardProps) {
   // Mock upcoming batch data
   const upcomingBatch = {
     date: '01/07/2025',
@@ -17,7 +18,9 @@ export default function CourseCard({ course, showLiveTrainingDetails = false }: 
 
   if (showLiveTrainingDetails) {
     return (
-      <div className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+      <div className={`rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 ${
+        isDarkMode ? 'bg-theme-tertiary' : 'bg-white'
+      }`}>
         <div className="relative">
           <img 
             src={course.thumbnail} 
@@ -35,29 +38,43 @@ export default function CourseCard({ course, showLiveTrainingDetails = false }: 
         </div>
         
         <div className="p-4">
-          <h4 className="font-bold text-gray-800 mb-3 text-lg">{course.title}</h4>
+          <h4 className={`font-bold mb-3 text-lg transition-colors duration-300 ${
+            isDarkMode ? 'text-theme-primary' : 'text-gray-800'
+          }`}>{course.title}</h4>
           
           {/* Upcoming Batch */}
-          <div className="bg-cyan-50 border border-cyan-200 rounded-lg p-3 mb-3">
+          <div className={`border border-cyan-200 rounded-lg p-3 mb-3 ${
+            isDarkMode 
+              ? 'bg-cyan-900/20 border-cyan-700/30' 
+              : 'bg-cyan-50'
+          }`}>
             <div className="flex items-center gap-2 mb-2">
               <Calendar className="w-4 h-4 text-cyan-600" />
-              <span className="text-sm font-semibold text-cyan-700">Next Batch</span>
+              <span className={`text-sm font-semibold ${
+                isDarkMode ? 'text-cyan-300' : 'text-cyan-700'
+              }`}>Next Batch</span>
             </div>
-            <div className="flex items-center gap-2 text-sm text-cyan-600">
+            <div className={`flex items-center gap-2 text-sm ${
+              isDarkMode ? 'text-cyan-400' : 'text-cyan-600'
+            }`}>
               <Clock className="w-4 h-4" />
               <span>{upcomingBatch.date} at {upcomingBatch.time}</span>
             </div>
           </div>
           
           {/* Modules */}
-          <div className="flex items-center gap-2 text-sm text-gray-600 mb-3">
+          <div className={`flex items-center gap-2 text-sm mb-3 transition-colors duration-300 ${
+            isDarkMode ? 'text-theme-secondary' : 'text-gray-600'
+          }`}>
             <BookOpen className="w-4 h-4" />
             <span>{course.completedModules}/{course.totalModules} modules</span>
           </div>
           
           {/* Progress */}
           <div className="mb-4">
-            <div className="flex justify-between text-sm text-gray-600 mb-1">
+            <div className={`flex justify-between text-sm mb-1 transition-colors duration-300 ${
+              isDarkMode ? 'text-theme-secondary' : 'text-gray-600'
+            }`}>
               <span>Progress</span>
               <span className="font-semibold">{course.progress}%</span>
             </div>
@@ -80,7 +97,9 @@ export default function CourseCard({ course, showLiveTrainingDetails = false }: 
   }
 
   return (
-    <div className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+    <div className={`rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 ${
+      isDarkMode ? 'bg-theme-tertiary' : 'bg-white'
+    }`}>
       <div className="relative">
         <img 
           src={course.thumbnail} 
@@ -101,15 +120,21 @@ export default function CourseCard({ course, showLiveTrainingDetails = false }: 
       </div>
       
       <div className="p-4">
-        <h4 className="font-semibold text-gray-800 mb-2 line-clamp-2">{course.title}</h4>
+        <h4 className={`font-semibold mb-2 line-clamp-2 transition-colors duration-300 ${
+          isDarkMode ? 'text-theme-primary' : 'text-gray-800'
+        }`}>{course.title}</h4>
         
-        <div className="flex items-center gap-2 text-sm text-gray-600 mb-3">
+        <div className={`flex items-center gap-2 text-sm mb-3 transition-colors duration-300 ${
+          isDarkMode ? 'text-theme-secondary' : 'text-gray-600'
+        }`}>
           <BookOpen className="w-4 h-4" />
           <span>{course.completedModules}/{course.totalModules} modules</span>
         </div>
         
         <div className="mb-3">
-          <div className="flex justify-between text-sm text-gray-600 mb-1">
+          <div className={`flex justify-between text-sm mb-1 transition-colors duration-300 ${
+            isDarkMode ? 'text-theme-secondary' : 'text-gray-600'
+          }`}>
             <span>Progress</span>
             <span>{course.progress}%</span>
           </div>
