@@ -7,9 +7,10 @@ interface SidebarProps {
   referral: Referral;
   events: Event[];
   userType: 'free' | 'paid' | 'dual';
+  isDarkMode?: boolean;
 }
 
-export default function Sidebar({ referral, events, userType }: SidebarProps) {
+export default function Sidebar({ referral, events, userType, isDarkMode }: SidebarProps) {
   // Filter events to show only masterclasses and make them all free
   const masterclassEvents = events.map(event => ({
     ...event,

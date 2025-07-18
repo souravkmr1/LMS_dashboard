@@ -4,6 +4,7 @@ import { User, LiveSession, Course } from '../types';
 
 interface HeroSectionProps {
   user: User;
+  isDarkMode?: boolean;
   liveSession?: LiveSession;
   freeCourse?: Course;
 }
