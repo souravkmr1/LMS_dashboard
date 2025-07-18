@@ -11,12 +11,12 @@ interface FeatureBoxProps {
 }
 
 const colorClasses = {
-  cyan: 'feature-box-cyan text-cyan-700',
-  blue: 'feature-box-blue text-blue-700',
-  teal: 'feature-box-teal text-teal-700',
-  orange: 'feature-box-orange text-orange-700',
-  pink: 'feature-box-pink text-pink-700',
-  indigo: 'feature-box-indigo text-indigo-700'
+  cyan: 'from-cyan-50 to-cyan-100 border-cyan-200 text-cyan-700',
+  blue: 'from-blue-50 to-blue-100 border-blue-200 text-blue-700',
+  teal: 'from-teal-50 to-teal-100 border-teal-200 text-teal-700',
+  orange: 'from-orange-50 to-orange-100 border-orange-200 text-orange-700',
+  pink: 'from-pink-50 to-pink-100 border-pink-200 text-pink-700',
+  indigo: 'from-indigo-50 to-indigo-100 border-indigo-200 text-indigo-700'
 };
 
 const iconColorClasses = {
@@ -31,21 +31,21 @@ const iconColorClasses = {
 export default function FeatureBox({ title, description, icon: Icon, color, children, className = '' }: FeatureBoxProps) {
   return (
     <div className={`
-      ${colorClasses[color]} 
-      rounded-2xl p-4 
-      hover-shadow hover-translate transition-all
+      bg-gradient-to-br ${colorClasses[color]} 
+      border-2 rounded-2xl p-6 
+      hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1
       ${className}
     `}>
-      <div className="d-flex align-items-start gap-4 mb-4">
+      <div className="flex items-start gap-4 mb-4">
         <div className={`
           ${iconColorClasses[color]} 
-          p-3 rounded-xl shadow-custom
+          p-3 rounded-xl shadow-lg
         `}>
           <Icon className="w-6 h-6" />
         </div>
         <div className="flex-1">
-          <h3 className="fs-5 fw-bold mb-2">{title}</h3>
-          <p className="text-muted small">{description}</p>
+          <h3 className="text-xl font-bold mb-2">{title}</h3>
+          <p className="text-gray-600 text-sm">{description}</p>
         </div>
       </div>
       {children}

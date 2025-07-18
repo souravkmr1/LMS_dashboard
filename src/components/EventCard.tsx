@@ -27,32 +27,32 @@ export default function EventCard({ event }: EventCardProps) {
   };
 
   return (
-    <div className="bg-white rounded-xl p-4 shadow-lg-custom hover-shadow hover-translate transition-all" style={{minWidth: '280px'}}>
-      <div className="d-flex align-items-start gap-3 mb-3">
+    <div className="bg-white rounded-xl p-4 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 min-w-[280px]">
+      <div className="flex items-start gap-3 mb-3">
         <div className={`${getEventTypeColor(event.type)} p-2 rounded-lg`}>
           <Calendar className="w-5 h-5 text-white" />
         </div>
         <div className="flex-1">
-          <h4 className="fw-semibold text-dark mb-1">{event.title}</h4>
-          <div className="d-flex align-items-center gap-2 small text-muted">
+          <h4 className="font-semibold text-gray-800 mb-1">{event.title}</h4>
+          <div className="flex items-center gap-2 text-sm text-gray-600">
             <Clock className="w-4 h-4" />
             <span>{formatDate(event.date)}</span>
           </div>
         </div>
       </div>
       
-      <div className="d-flex align-items-center justify-content-between">
-        <div className="d-flex align-items-center gap-2">
+      <div className="flex items-center justify-between">
+        <div className="flex items-center gap-2">
           <span className={`
-            badge
-            ${event.isFree ? 'bg-cyan-500 bg-opacity-25 text-cyan-700' : 'bg-blue-500 bg-opacity-25 text-blue-700'}
+            px-2 py-1 rounded-full text-xs font-semibold
+            ${event.isFree ? 'bg-cyan-100 text-cyan-700' : 'bg-blue-100 text-blue-700'}
           `}>
             {event.isFree ? 'FREE' : 'PREMIUM'}
           </span>
-          <span className="small text-muted text-capitalize">{event.type}</span>
+          <span className="text-xs text-gray-500 capitalize">{event.type}</span>
         </div>
         
-        <button className="btn btn-gradient-cyan btn-sm d-flex align-items-center gap-1">
+        <button className="bg-gradient-to-r from-cyan-500 to-blue-500 text-white px-4 py-1 rounded-lg text-sm font-semibold hover:from-cyan-600 hover:to-blue-600 transition-all duration-300 flex items-center gap-1">
           Register
           <ExternalLink className="w-3 h-3" />
         </button>

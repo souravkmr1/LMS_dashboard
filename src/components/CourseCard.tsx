@@ -17,58 +17,60 @@ export default function CourseCard({ course, showLiveTrainingDetails = false }: 
 
   if (showLiveTrainingDetails) {
     return (
-      <div className="bg-white rounded-xl overflow-hidden shadow-lg-custom hover-shadow hover-translate transition-all">
-        <div className="position-relative">
+      <div className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+        <div className="relative">
           <img 
             src={course.thumbnail} 
             alt={course.title}
-            className="w-100 object-cover"
-            style={{height: '8rem'}}
+            className="w-full h-32 object-cover"
           />
-          <div className="position-absolute top-0 start-0 w-100 h-100 bg-dark bg-opacity-50 d-flex align-items-center justify-content-center opacity-0 transition-all">
+          <div className="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity duration-300">
             <Play className="w-8 h-8 text-white" />
           </div>
-          <div className="position-absolute top-0 end-0 m-2">
-            <span className="badge bg-cyan-500 text-white">
+          <div className="absolute top-2 right-2">
+            <span className="bg-cyan-500 text-white px-2 py-1 rounded-full text-xs font-semibold">
               PREMIUM
             </span>
           </div>
         </div>
         
         <div className="p-4">
-          <h4 className="fw-bold text-dark mb-3 fs-6">{course.title}</h4>
+          <h4 className="font-bold text-gray-800 mb-3 text-lg">{course.title}</h4>
           
           {/* Upcoming Batch */}
-          <div className="bg-cyan-50 border border-cyan-200 rounded p-3 mb-3">
-            <div className="d-flex align-items-center gap-2 mb-2">
+          <div className="bg-cyan-50 border border-cyan-200 rounded-lg p-3 mb-3">
+            <div className="flex items-center gap-2 mb-2">
               <Calendar className="w-4 h-4 text-cyan-600" />
-              <span className="small fw-semibold text-cyan-700">Next Batch</span>
+              <span className="text-sm font-semibold text-cyan-700">Next Batch</span>
             </div>
-            <div className="d-flex align-items-center gap-2 small text-cyan-600">
+            <div className="flex items-center gap-2 text-sm text-cyan-600">
               <Clock className="w-4 h-4" />
               <span>{upcomingBatch.date} at {upcomingBatch.time}</span>
             </div>
           </div>
           
           {/* Modules */}
-          <div className="d-flex align-items-center gap-2 small text-muted mb-3">
+          <div className="flex items-center gap-2 text-sm text-gray-600 mb-3">
             <BookOpen className="w-4 h-4" />
             <span>{course.completedModules}/{course.totalModules} modules</span>
           </div>
           
           {/* Progress */}
           <div className="mb-4">
-            <div className="d-flex justify-content-between small text-muted mb-1">
+            <div className="flex justify-between text-sm text-gray-600 mb-1">
               <span>Progress</span>
-              <span className="fw-semibold">{course.progress}%</span>
+              <span className="font-semibold">{course.progress}%</span>
             </div>
-            <div className="progress" style={{height: '8px'}}>
-              <div className="progress-bar progress-cyan" style={{ width: `${course.progress}%` }}></div>
+            <div className="w-full bg-gray-200 rounded-full h-2">
+              <div 
+                className="bg-gradient-to-r from-cyan-500 to-blue-500 h-2 rounded-full transition-all duration-500"
+                style={{ width: `${course.progress}%` }}
+              ></div>
             </div>
           </div>
           
           {/* Action Buttons */}
-          <button className="btn btn-gradient-cyan w-100 d-flex align-items-center justify-content-center gap-2">
+          <button className="w-full bg-gradient-to-r from-cyan-500 to-blue-500 text-white py-2 rounded-lg font-semibold hover:from-cyan-600 hover:to-blue-600 transition-all duration-300 flex items-center justify-center gap-2">
             <Play className="w-4 h-4" />
             Continue Learning
           </button>
@@ -78,20 +80,19 @@ export default function CourseCard({ course, showLiveTrainingDetails = false }: 
   }
 
   return (
-    <div className="bg-white rounded-xl overflow-hidden shadow-lg-custom hover-shadow hover-translate transition-all">
-      <div className="position-relative">
+    <div className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+      <div className="relative">
         <img 
           src={course.thumbnail} 
           alt={course.title}
-          className="w-100 object-cover"
-          style={{height: '8rem'}}
+          className="w-full h-32 object-cover"
         />
-        <div className="position-absolute top-0 start-0 w-100 h-100 bg-dark bg-opacity-50 d-flex align-items-center justify-content-center opacity-0 transition-all">
+        <div className="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity duration-300">
           <Play className="w-8 h-8 text-white" />
         </div>
-        <div className="position-absolute top-0 end-0 m-2">
+        <div className="absolute top-2 right-2">
           <span className={`
-            badge
+            px-2 py-1 rounded-full text-xs font-semibold
             ${course.type === 'free' ? 'bg-cyan-500 text-white' : 'bg-blue-500 text-white'}
           `}>
             {course.type === 'free' ? 'FREE' : 'PREMIUM'}
@@ -100,24 +101,27 @@ export default function CourseCard({ course, showLiveTrainingDetails = false }: 
       </div>
       
       <div className="p-4">
-        <h4 className="fw-semibold text-dark mb-2 line-clamp-2">{course.title}</h4>
+        <h4 className="font-semibold text-gray-800 mb-2 line-clamp-2">{course.title}</h4>
         
-        <div className="d-flex align-items-center gap-2 small text-muted mb-3">
+        <div className="flex items-center gap-2 text-sm text-gray-600 mb-3">
           <BookOpen className="w-4 h-4" />
           <span>{course.completedModules}/{course.totalModules} modules</span>
         </div>
         
         <div className="mb-3">
-          <div className="d-flex justify-content-between small text-muted mb-1">
+          <div className="flex justify-between text-sm text-gray-600 mb-1">
             <span>Progress</span>
             <span>{course.progress}%</span>
           </div>
-          <div className="progress" style={{height: '8px'}}>
-            <div className="progress-bar progress-cyan" style={{ width: `${course.progress}%` }}></div>
+          <div className="w-full bg-gray-200 rounded-full h-2">
+            <div 
+              className="bg-gradient-to-r from-cyan-500 to-blue-500 h-2 rounded-full transition-all duration-500"
+              style={{ width: `${course.progress}%` }}
+            ></div>
           </div>
         </div>
         
-        <button className="btn btn-gradient-cyan w-100 d-flex align-items-center justify-content-center gap-2">
+        <button className="w-full bg-gradient-to-r from-cyan-500 to-blue-500 text-white py-2 rounded-lg font-semibold hover:from-cyan-600 hover:to-blue-600 transition-all duration-300 flex items-center justify-center gap-2">
           <Play className="w-4 h-4" />
           Continue Learning
         </button>
