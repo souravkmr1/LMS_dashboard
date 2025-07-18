@@ -20,65 +20,65 @@ export default function Sidebar({ referral, events, userType }: SidebarProps) {
   return (
     <div className="space-y-6">
       {/* Referral Panel - Updated to show Amazon Vouchers */}
-      <div className="bg-gradient-to-br from-yellow-50 to-orange-50 border-2 border-orange-200 rounded-2xl p-6">
-        <div className="flex items-center gap-3 mb-4">
+      <div className="bg-warning bg-opacity-10 border border-warning border-opacity-50 rounded-2xl p-4">
+        <div className="d-flex align-items-center gap-3 mb-4">
           <div className="bg-orange-500 p-2 rounded-xl">
             <Gift className="w-6 h-6 text-white" />
           </div>
-          <h3 className="text-xl font-bold text-orange-700">Refer & Earn</h3>
+          <h3 className="fs-5 fw-bold text-warning mb-0">Refer & Earn</h3>
         </div>
         
         <div className="space-y-3">
-          <div className="flex justify-between items-center">
-            <span className="text-gray-600">Total Referrals</span>
-            <span className="font-bold text-orange-600">{referral.totalReferrals}</span>
+          <div className="d-flex justify-content-between align-items-center">
+            <span className="text-muted">Total Referrals</span>
+            <span className="fw-bold text-warning">{referral.totalReferrals}</span>
           </div>
-          <div className="flex justify-between items-center">
-            <span className="text-gray-600">Reward Points</span>
-            <span className="font-bold text-orange-600">{referral.rewardPoints}</span>
+          <div className="d-flex justify-content-between align-items-center">
+            <span className="text-muted">Reward Points</span>
+            <span className="fw-bold text-warning">{referral.rewardPoints}</span>
           </div>
           
           {/* Amazon Vouchers Section - Enhanced */}
-          <div className="bg-gradient-to-r from-orange-100 to-yellow-100 border border-orange-300 rounded-lg p-3">
-            <div className="flex items-center gap-2 mb-2">
-              <ShoppingBag className="w-5 h-5 text-orange-600" />
-              <span className="font-semibold text-orange-700">Amazon Vouchers</span>
+          <div className="bg-warning bg-opacity-25 border border-warning rounded p-3">
+            <div className="d-flex align-items-center gap-2 mb-2">
+              <ShoppingBag className="w-5 h-5 text-warning" />
+              <span className="fw-semibold text-warning">Amazon Vouchers</span>
             </div>
-            <div className="flex items-center justify-between">
-              <span className="text-2xl font-bold text-orange-600">{referral.amazonVouchers}</span>
-              <span className="bg-orange-500 text-white px-2 py-1 rounded-full text-xs font-semibold">
+            <div className="d-flex align-items-center justify-content-between">
+              <span className="fs-3 fw-bold text-warning">{referral.amazonVouchers}</span>
+              <span className="badge bg-orange-500 text-white">
                 Earned
               </span>
             </div>
-            <p className="text-xs text-orange-600 mt-1">
+            <p className="small text-warning mt-1">
               Redeem your vouchers in rewards section
             </p>
           </div>
         </div>
         
-        <button className="w-full bg-gradient-to-r from-orange-500 to-yellow-500 text-white py-3 rounded-xl font-semibold hover:from-orange-600 hover:to-yellow-600 transition-all duration-300 mt-4">
+        <button className="btn btn-gradient-orange w-100 py-2 rounded-xl fw-semibold mt-4">
           Refer Friends Now
         </button>
       </div>
 
       {/* Community Support Widget */}
-      <div className="bg-gradient-to-br from-cyan-50 to-blue-50 border-2 border-cyan-200 rounded-2xl p-6">
-        <div className="flex items-center gap-3 mb-4">
+      <div className="feature-box-cyan rounded-2xl p-4">
+        <div className="d-flex align-items-center gap-3 mb-4">
           <div className="bg-cyan-500 p-2 rounded-xl">
             <MessageCircle className="w-6 h-6 text-white" />
           </div>
-          <h3 className="text-xl font-bold text-cyan-700">Join Our Community and Support Help Group</h3>
+          <h3 className="fs-5 fw-bold text-cyan-700 mb-0">Join Our Community and Support Help Group</h3>
         </div>
         
-        <p className="text-gray-600 mb-4">Connect with peers, get instant help, and join our vibrant community!</p>
+        <p className="text-muted mb-4">Connect with peers, get instant help, and join our vibrant community!</p>
         
         <div className="space-y-3">
-          <button className="w-full bg-gradient-to-r from-cyan-500 to-blue-500 text-white py-3 rounded-xl font-semibold hover:from-cyan-600 hover:to-blue-600 transition-all duration-300 flex items-center justify-center gap-2">
+          <button className="btn btn-gradient-cyan w-100 py-2 rounded-xl fw-semibold d-flex align-items-center justify-content-center gap-2">
             <MessageCircle className="w-5 h-5" />
             Join Discord
           </button>
           
-          <button className="w-full bg-gradient-to-r from-green-500 to-emerald-500 text-white py-3 rounded-xl font-semibold hover:from-green-600 hover:to-emerald-600 transition-all duration-300 flex items-center justify-center gap-2">
+          <button className="btn btn-gradient-green w-100 py-2 rounded-xl fw-semibold d-flex align-items-center justify-content-center gap-2">
             <MessageCircle className="w-5 h-5" />
             Join WhatsApp Group
           </button>
@@ -86,20 +86,20 @@ export default function Sidebar({ referral, events, userType }: SidebarProps) {
       </div>
 
       {/* Upcoming Masterclass */}
-      <div className="bg-white rounded-2xl p-6 shadow-lg">
-        <div className="flex items-center gap-3 mb-4">
+      <div className="bg-white rounded-2xl p-4 shadow-lg-custom">
+        <div className="d-flex align-items-center gap-3 mb-4">
           <div className="bg-cyan-500 p-2 rounded-xl">
             <Calendar className="w-6 h-6 text-white" />
           </div>
-          <h3 className="text-xl font-bold text-gray-800">Upcoming Masterclass</h3>
+          <h3 className="fs-5 fw-bold text-dark mb-0">Upcoming Masterclass</h3>
         </div>
         
         <div className="space-y-4">
           {masterclassEvents.slice(0, 3).map(event => (
-            <div key={event.id} className="border rounded-lg p-3 hover:bg-gray-50 transition-colors">
-              <h4 className="font-semibold text-sm text-gray-800 mb-1">{event.title}</h4>
-              <p className="text-xs text-gray-600">{event.date.toLocaleDateString()}</p>
-              <span className="inline-block mt-2 px-2 py-1 rounded-full text-xs font-semibold bg-cyan-100 text-cyan-700">
+            <div key={event.id} className="border rounded p-3 transition-colors">
+              <h4 className="fw-semibold small text-dark mb-1">{event.title}</h4>
+              <p className="small text-muted">{event.date.toLocaleDateString()}</p>
+              <span className="badge bg-cyan-500 bg-opacity-25 text-cyan-700 mt-2">
                 FREE
               </span>
             </div>
@@ -109,21 +109,21 @@ export default function Sidebar({ referral, events, userType }: SidebarProps) {
 
       {/* Upgrade Offer (for free users) */}
       {(userType === 'free') && (
-        <div className="bg-gradient-to-br from-blue-50 to-cyan-50 border-2 border-blue-200 rounded-2xl p-6">
-          <div className="flex items-center gap-3 mb-4">
+        <div className="feature-box-blue rounded-2xl p-4">
+          <div className="d-flex align-items-center gap-3 mb-4">
             <div className="bg-blue-500 p-2 rounded-xl">
               <Star className="w-6 h-6 text-white" />
             </div>
-            <h3 className="text-xl font-bold text-blue-700">Upgrade Now</h3>
+            <h3 className="fs-5 fw-bold text-blue-700 mb-0">Upgrade Now</h3>
           </div>
           
-          <p className="text-gray-600 mb-4">Get Project-Based Certificate with Live Training</p>
+          <p className="text-muted mb-4">Get Project-Based Certificate with Live Training</p>
           
-          <div className="bg-yellow-100 border border-yellow-300 rounded-lg p-3 mb-4">
-            <p className="text-yellow-800 font-semibold text-sm">🎉 20% Off Limited Time</p>
+          <div className="bg-warning bg-opacity-25 border border-warning rounded p-3 mb-4">
+            <p className="text-warning fw-semibold small">🎉 20% Off Limited Time</p>
           </div>
           
-          <button className="w-full bg-gradient-to-r from-cyan-500 to-blue-500 text-white py-3 rounded-xl font-semibold hover:from-cyan-600 hover:to-blue-600 transition-all duration-300 flex items-center justify-center gap-2">
+          <button className="btn btn-gradient-cyan w-100 py-2 rounded-xl fw-semibold d-flex align-items-center justify-content-center gap-2">
             <Trophy className="w-5 h-5" />
             Upgrade Now
           </button>
