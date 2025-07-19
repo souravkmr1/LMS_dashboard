@@ -4,7 +4,6 @@ import { User, LiveSession, Course } from '../types';
 
 interface HeroSectionProps {
   user: User;
-  isDarkMode?: boolean;
   liveSession?: LiveSession;
   freeCourse?: Course;
 }
@@ -140,12 +139,12 @@ export default function HeroSection({ user, liveSession, freeCourse }: HeroSecti
         </div>
 
         {/* Live Schedules Section with Course Details */}
-        <div className="bg-white rounded-2xl p-6 shadow-lg border border-gray-100">
+        <div className="bg-white dark:bg-dark-secondary rounded-2xl p-6 shadow-lg border border-gray-100 dark:border-gray-700">
           <div className="flex items-center gap-3 mb-6">
             <div className="bg-gradient-to-r from-cyan-500 to-blue-500 p-2 rounded-xl">
               <Calendar className="w-6 h-6 text-white" />
             </div>
-            <h2 className="text-2xl font-bold text-gray-800">Your Live Training Schedules</h2>
+            <h2 className="text-2xl font-bold text-gray-800 dark:text-gray-100">Your Live Training Schedules</h2>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -155,15 +154,15 @@ export default function HeroSection({ user, liveSession, freeCourse }: HeroSecti
                 className={`
                   border-2 rounded-xl p-4 transition-all duration-300 hover:shadow-lg
                   ${schedule.isNext 
-                    ? 'border-cyan-300 bg-gradient-to-br from-cyan-50 to-blue-50' 
-                    : 'border-gray-200 bg-gray-50 hover:bg-gray-100'
+                    ? 'border-cyan-300 bg-gradient-to-br from-cyan-50 to-blue-50 dark:from-cyan-900/20 dark:to-blue-900/20 dark:border-cyan-700/30' 
+                    : 'border-gray-200 dark:border-gray-600 bg-gray-50 dark:bg-gray-800/50 hover:bg-gray-100 dark:hover:bg-gray-700/50'
                   }
                 `}
               >
                 <div className="flex items-start justify-between mb-3">
                   <div className="flex-1">
-                    <h3 className="font-bold text-gray-800 text-lg mb-1">{schedule.course}</h3>
-                    <p className="text-sm text-gray-600 mb-2">{schedule.session}</p>
+                    <h3 className="font-bold text-gray-800 dark:text-gray-100 text-lg mb-1">{schedule.course}</h3>
+                    <p className="text-sm text-gray-600 dark:text-gray-300 mb-2">{schedule.session}</p>
                   </div>
                   {schedule.isNext && (
                     <span className="bg-cyan-500 text-white text-xs px-2 py-1 rounded-full font-semibold">
@@ -173,30 +172,30 @@ export default function HeroSection({ user, liveSession, freeCourse }: HeroSecti
                 </div>
 
                 {/* Upcoming Batch Date & Time */}
-                <div className="bg-white/80 border border-cyan-200 rounded-lg p-3 mb-3">
+                <div className="bg-white/80 dark:bg-gray-700/50 border border-cyan-200 dark:border-cyan-700/30 rounded-lg p-3 mb-3">
                   <div className="flex items-center gap-2 mb-1">
                     <Calendar className="w-4 h-4 text-cyan-600" />
-                    <span className="text-sm font-semibold text-cyan-700">Next Batch</span>
+                    <span className="text-sm font-semibold text-cyan-700 dark:text-cyan-300">Next Batch</span>
                   </div>
-                  <div className="flex items-center gap-2 text-sm text-cyan-600">
+                  <div className="flex items-center gap-2 text-sm text-cyan-600 dark:text-cyan-400">
                     <Clock className="w-4 h-4" />
                     <span>{schedule.batchDate} at {schedule.batchTime}</span>
                   </div>
                 </div>
 
                 {/* Modules */}
-                <div className="flex items-center gap-2 text-sm text-gray-600 mb-3">
+                <div className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-300 mb-3">
                   <BookOpen className="w-4 h-4" />
                   <span>{schedule.modules.completed}/{schedule.modules.total} modules</span>
                 </div>
 
                 {/* Progress */}
                 <div className="mb-4">
-                  <div className="flex justify-between text-sm text-gray-600 mb-1">
+                  <div className="flex justify-between text-sm text-gray-600 dark:text-gray-300 mb-1">
                     <span>Progress</span>
                     <span className="font-semibold">{schedule.progress}%</span>
                   </div>
-                  <div className="w-full bg-gray-200 rounded-full h-2">
+                  <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
                     <div 
                       className="bg-gradient-to-r from-cyan-500 to-blue-500 h-2 rounded-full transition-all duration-500"
                       style={{ width: `${schedule.progress}%` }}

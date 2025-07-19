@@ -10,10 +10,6 @@ interface GuideVideo {
   icon: React.ComponentType<any>;
 }
 
-interface PlatformGuideSectionProps {
-  isDarkMode?: boolean;
-}
-
 const guideVideos: GuideVideo[] = [
   {
     id: '1',
@@ -49,13 +45,9 @@ const guideVideos: GuideVideo[] = [
   }
 ];
 
-export default function PlatformGuideSection({ isDarkMode }: PlatformGuideSectionProps) {
+export default function PlatformGuideSection() {
   return (
-    <div className={`rounded-2xl p-8 border-2 transition-colors duration-300 ${
-      isDarkMode 
-        ? 'bg-theme-secondary border-theme-primary' 
-        : 'bg-gradient-to-br from-cyan-50 via-blue-50 to-teal-50 border-cyan-100'
-    }`}>
+    <div className="bg-gradient-to-br from-cyan-50 via-blue-50 to-teal-50 dark:from-cyan-900/20 dark:via-blue-900/20 dark:to-teal-900/20 border-2 border-cyan-100 dark:border-cyan-700/30 rounded-2xl p-8 transition-colors duration-300">
       <div className="text-center mb-8">
         <div className="flex items-center justify-center gap-3 mb-4">
           <div className="bg-gradient-to-r from-cyan-500 to-blue-500 p-3 rounded-xl">
@@ -65,9 +57,7 @@ export default function PlatformGuideSection({ isDarkMode }: PlatformGuideSectio
             📺 Learn How to Use ScholarHat Effectively
           </h2>
         </div>
-        <p className={`text-lg max-w-2xl mx-auto transition-colors duration-300 ${
-          isDarkMode ? 'text-theme-secondary' : 'text-gray-600'
-        }`}>
+        <p className="text-lg max-w-2xl mx-auto text-gray-600 dark:text-gray-300">
           Master the platform with our quick video guides and boost your learning experience
         </p>
       </div>
@@ -78,9 +68,7 @@ export default function PlatformGuideSection({ isDarkMode }: PlatformGuideSectio
           return (
             <div
               key={video.id}
-              className={`rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 group ${
-                isDarkMode ? 'bg-theme-tertiary' : 'bg-white'
-              }`}
+              className="bg-white dark:bg-gray-800/50 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 group"
             >
               <div className="relative">
                 <img
@@ -101,9 +89,7 @@ export default function PlatformGuideSection({ isDarkMode }: PlatformGuideSectio
               </div>
               
               <div className="p-5">
-                <h3 className={`font-bold mb-3 text-lg leading-tight transition-colors duration-300 ${
-                  isDarkMode ? 'text-theme-primary' : 'text-gray-800'
-                }`}>
+                <h3 className="font-bold mb-3 text-lg leading-tight text-gray-800 dark:text-gray-100">
                   {video.title}
                 </h3>
                 
